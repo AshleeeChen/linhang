@@ -1,0 +1,1402 @@
+import web_webview from '@ohos.web.webview';
+import router from '@ohos.router';
+
+@Entry
+@Component
+struct fourpage {
+  @State message: string = 'Hello World'
+  webviewController: web_webview.WebviewController = new web_webview.WebviewController();
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          Column() {
+            Text("首页")
+              .width("200vp")
+              .height("60vp")
+              .fontColor(Color.Black)
+              .padding({ left: "20vp" })
+              .fontSize("20fp")
+              .fontWeight(FontWeight.Bold)
+            Search({})
+              .width("95%")
+              .height("40vp")
+              .offset({ x: "9vp", y: "1.6vp" })
+            Swiper() {
+              Image($r('app.media.jiaju1'))
+                .width("100%")
+                .height("200vp")
+              Image($r('app.media.jiaju2'))
+                .width("100%")
+                .height("200vp")
+              Image($r('app.media.jiaju3'))
+                .width("100%")
+                .height("200vp")
+            }
+            .width("100%")
+            .height("200vp")
+            .autoPlay(true)
+            Row() {
+              Text("  常用功能")
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .fontColor("#224377")
+                .textAlign(TextAlign.Center)
+                .fontSize("23fp")
+                .fontStyle(FontStyle.Normal)
+                .fontWeight(FontWeight.Regular)
+            }
+            .width("100%")
+            .height("45vp")
+            .offset({ x: "0vp", y: "0.26vp" })
+            Row() {
+              Column() {
+                Image($r('app.media.zhijiachangjing'))
+                  .width("65%")
+                  .height("60%")
+                  .margin({ top: "5vp" })
+                  .onClick(() => {
+                    router.pushUrl({
+                      url: 'pages/dyy1'
+                    });
+                  })
+                Text("智家场景")
+                  .width("100%")
+                  .height("35%")
+                  .offset({ x: "0vp", y: "-1.24vp" })
+                  .fontColor("#0c1088")
+                  .textAlign(TextAlign.Center)
+                  .fontSize("15fp")
+
+              }
+              .width("25%")
+              .height("100%")
+              Column() {
+                Image($r('app.media.zhijiashebei'))
+                  .width("57%")
+                  .height("65%")
+                  .offset({ x: "-0.28vp", y: "-0.73vp" })
+                  .margin({ top: "5vp" })
+                  .objectFit(ImageFit.Contain)
+                  .onClick(() => {
+                    router.pushUrl({
+                      url: 'pages/dey1'
+                    });
+                  })
+
+                Text("智家设备")
+                  .width("100%")
+                  .height("35%")
+                  .offset({ x: "0vp", y: "-5.1vp" })
+                  .fontColor("#0c1088")
+                  .textAlign(TextAlign.Center)
+                  .fontSize("15fp")
+              }
+              .width("25%")
+              .height("100%")
+              Column() {
+                Image($r('app.media.jiajudingzhi'))
+                  .width("75%")
+                  .height("75%")
+                  .offset({ x: "-0.29vp", y: "-5vp" })
+                  .margin({ top: "5vp" })
+                  .objectFit(ImageFit.Contain)
+                  .onClick(() => {
+                    router.pushUrl({
+                      url: 'pages/zjcj'
+                    });
+                  })
+                Text("家具定制")
+                  .width("100%")
+                  .height("35%")
+                  .offset({ x: "0vp", y: "-12.8vp" })
+                  .fontColor("#0c1088")
+                  .textAlign(TextAlign.Center)
+                  .fontSize("15fp")
+              }
+              .width("25%")
+              .height("100%")
+              Column() {
+                Image($r('app.media.jiaju'))
+                  .width("73%")
+                  .height("60%")
+                  .margin({ top: "5vp" })
+                  .objectFit(ImageFit.Contain)
+                  .onClick(() => {
+                    router.pushUrl({
+                      url: 'pages/sp'
+                    });
+                  })
+                Text("·时尚分享")
+                  .width("100%")
+                  .height("35%")
+                  .offset({ x: "0vp", y: "-1.24vp" })
+                  .fontColor("#0c1088")
+                  .textAlign(TextAlign.Center)
+                  .fontSize("15fp")
+
+              }
+              .width("25%")
+              .height("100%")
+            }
+            .width("95%")
+            .height("79.07vp")
+            .offset({ x: "9vp", y: "0.48vp" })
+            .borderWidth("1vp")
+            .borderColor({ top: "#1623da", bottom: "#1623da", left: "#f8f7f7", right: "#f9f5f5" })
+            .justifyContent(FlexAlign.Center)
+            Row() {
+              Text("热搜排行榜")
+                .width("64.22%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .fontColor("#224377")
+                .padding({ left: "20vp", right: "5vp" })
+                .textAlign(TextAlign.End)
+                .fontSize("21fp")
+              Image($r('app.media.hot'))
+                .width("8%")
+                .height("100%")
+                .objectFit(ImageFit.Contain)
+            }
+            .width("360vp")
+            .height("55vp")
+            Tabs() {
+              TabContent() {
+                List() {
+                  ListItem() {
+                    Row() {
+                      Text("排名")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                      Text("家具名称")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                      Text("搜索热度")
+                        .width("35%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("1")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("灯具")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("82445567")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("2")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("床头柜")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("67464564")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("3")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("书桌")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("57453445")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("4")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("壁橱")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("5433226")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("100%")
+                .height("80%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .opacity(1)
+              .tabBar({ icon: $r('app.media.jiajupaim'), text: "家具产品" })
+              TabContent() {
+                List() {
+                  ListItem() {
+                    Row() {
+                      Text("排名")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                      Text("家具品牌")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                      Text("好评次数")
+                        .width("35%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("1")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("欧派整装")
+                        .width("45%")
+                        .height("100%")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("56888")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("2")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("永盛家居")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("43212")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("3")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("美杜莎整装")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("41731")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("4")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("美静家具")
+                        .width("45%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                      Text("9876")
+                        .width("35%")
+                        .height("100%")
+                        .offset({ x: "0vp", y: "0vp" })
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("100%")
+                .height("80%")
+              }
+              .tabBar({ icon: $r('app.media.pinpai'), text: "家具品牌" })
+              TabContent() {
+                List() {
+                  ListItem() {
+                    Row() {
+                      Text("排名")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                      Text("设计师")
+                        .width("27%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                      Text("风格")
+                        .width("33%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                        .fontStyle(FontStyle.Italic)
+                        .fontWeight(FontWeight.Regular)
+                      Text("联系")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor("#1434b3")
+                        .textAlign(TextAlign.Center)
+                        .fontSize("14fp")
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("1")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                      Text("Givenchy Gu")
+                        .width("27%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("巴洛克风")
+                        .width("33%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("联系")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("2")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                      Text("Alexander Xu")
+                        .width("27%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("现代风")
+                        .width("33%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("联系")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("3")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                      Text("Shiryly Wu")
+                        .width("27%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("扠寂风")
+                        .width("33%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("联系")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                  ListItem() {
+                    Row() {
+                      Text("4")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                      Text("Ashley Chen")
+                        .width("27%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("洛可可风")
+                        .width("33%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                        .fontWeight(FontWeight.Regular)
+                      Text("联系")
+                        .width("20%")
+                        .height("100%")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("13fp")
+                        .fontStyle(FontStyle.Normal)
+                    }
+                    .width("100%")
+                    .height("100%")
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("100%")
+                .height("80%")
+              }
+              .tabBar({ icon: $r('app.media.shejishi'), text: "设计师" })
+            }
+            .width("100%")
+            .height("33.96%")
+            .offset({ x: "0vp", y: "1.11vp" })
+          }
+          .width("100%")
+          .height("93%")
+          .alignItems(HorizontalAlign.Start)
+        }
+        .tabBar({ icon: $r('app.media.sy'), text: "首页" })
+        TabContent() {
+          Column() {
+            Text("搭配")
+              .width("200vp")
+              .height("60vp")
+              .fontColor(Color.Black)
+              .padding({ left: "20vp" })
+              .fontSize("20fp")
+              .fontWeight(FontWeight.Bold)
+            Row() {
+              Text("点击设置")
+                .width("150vp")
+                .height("100%")
+                .fontColor(Color.Black)
+                .textAlign(TextAlign.Center)
+                .fontSize("20fp")
+            }
+            .width("360vp")
+            .height("40vp")
+            List() {
+              ListItem() {
+                Column() {
+                  Image($r('app.media.quanju'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Contain)
+                  Row() {
+                    Text("全宅")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.yilou'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("一楼")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.keting'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("客厅")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.cantin'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("餐厅")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.zhuwo'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("主卧")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.ciwo'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("次卧")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+              ListItem() {
+                Column() {
+                  Image($r('app.media.shufang'))
+                    .width("100%")
+                    .height("80%")
+                    .objectFit(ImageFit.Fill)
+                  Row() {
+                    Text("书房")
+                      .width("40%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Bold)
+                    Text("0/0")
+                      .width("50%")
+                      .height("100%")
+                      .fontColor(Color.Black)
+                      .textAlign(TextAlign.End)
+                      .fontSize("18fp")
+                      .fontWeight(FontWeight.Medium)
+                  }
+                  .width("100%")
+                  .height("20%")
+                }
+                .width("90%")
+                .height("100%")
+                .borderWidth("1vp")
+              }
+              .width("100%")
+              .height("35%")
+            }
+            .width("100%")
+            .height("95%")
+
+          }
+          .width("100%")
+          .height("93%")
+          .alignItems(HorizontalAlign.Start)
+        }
+        .tabBar({ icon: $r('app.media.xs'), text: "搭配" })
+        TabContent() {
+          Column() {
+            Row() {
+              Text("商城\n")
+                .width("200vp")
+                .height("60vp")
+                .fontColor(Color.Black)
+                .padding({ left: "20vp" })
+                .fontSize("20fp")
+                .fontWeight(FontWeight.Bold)
+              Text()
+                .width("158.5vp")
+                .height("60vp")
+                .fontColor(Color.Black)
+            }
+            .width("100%")
+            .height("60vp")
+            Search({})
+              .width("100%")
+              .height("40vp")
+            Row() {
+              Text("综合排名最高")
+                .width("29.25%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .borderWidth("0.5vp")
+                .borderColor("#e8e8e8")
+                .fontColor(Color.Black)
+                .textAlign(TextAlign.Center)
+                .fontSize("14fp")
+              Text("销量最高")
+                .width("20%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .borderWidth("0.5vp")
+                .borderColor("#e8e8e8")
+                .fontColor(Color.Black)
+                .textAlign(TextAlign.Center)
+                .fontSize("14fp")
+              Text("人气最高")
+                .width("20.75%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .borderWidth("0.5vp")
+                .borderColor("#e8e8e8")
+                .fontColor(Color.Black)
+                .textAlign(TextAlign.Center)
+                .fontSize("14fp")
+              Text("价格从高到低\n")
+                .width("30%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+                .borderWidth("0.5vp")
+                .borderColor("#e8e8e8")
+                .fontColor(Color.Black)
+                .textAlign(TextAlign.Center)
+                .fontSize("14fp")
+            }
+            .width("100%")
+            .height("50vp")
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.yazideng'))
+                    .width("40%")
+                    .height("100%")
+                    .objectFit(ImageFit.Cover)
+                  Column() {
+                    Text("毛绒鸭抱抱灯 拍打感应 延时关灯 无极调光")
+                      .width("100%")
+                      .height("60%")
+                      .borderWidth("0vp")
+                      .borderColor("#ff9705")
+                      .fontColor(Color.Black)
+                      .padding({ left: "20vp" })
+                      .textAlign(TextAlign.Start)
+                      .fontSize("18fp")
+
+                    Row() {
+                      Text("销量：2425")
+                        .width("50%")
+                        .height("60vp")
+                        .borderWidth("0vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                      Text("价格：￥159")
+                        .width("50%")
+                        .height("100%")
+                        .borderWidth("0vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                    }
+                    .width("100%")
+                    .height("40%")
+                  }
+                  .width("60%")
+                  .height("100%")
+                }
+                .width("100%")
+                .height("100%")
+              }
+              .width("100%")
+              .height("100%")
+            }
+            .width("100%")
+            .height("20%")
+            .borderStyle(BorderStyle.Solid)
+            .borderWidth("1vp")
+            .borderColor("#ff9705")
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.zhuozi'))
+                    .width("40%")
+                    .height("100%")
+                    .objectFit(ImageFit.Cover)
+                  Column() {
+                    Text("智能轻奢电动大理石圆桌火锅桌")
+                      .width("100%")
+                      .height("60%")
+                      .fontColor(Color.Black)
+                      .padding({ left: "20vp" })
+                      .textAlign(TextAlign.Start)
+                      .fontSize("18fp")
+                    Row() {
+                      Text("销量：2425")
+                        .width("50%")
+                        .height("60vp")
+                        .borderWidth("0.5vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                      Text("价格：￥159")
+                        .width("50%")
+                        .height("100%")
+                        .borderWidth("0vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                    }
+                    .width("100%")
+                    .height("40%")
+                  }
+                  .width("60%")
+                  .height("100%")
+                }
+                .width("100%")
+                .height("100%")
+              }
+              .width("100%")
+              .height("100%")
+            }
+            .width("100%")
+            .height("20%")
+            .borderWidth("1vp")
+            .borderColor("#ff9705")
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.xiangxun'))
+                    .width("40%")
+                    .height("100%")
+                    .objectFit(ImageFit.Cover)
+                  Column() {
+                    Text("水雾夜灯香薰加湿器")
+                      .width("100%")
+                      .height("60%")
+                      .borderWidth("0.5vp")
+                      .borderColor("#ff9705")
+                      .fontColor(Color.Black)
+                      .padding({ left: "20vp" })
+                      .textAlign(TextAlign.Center)
+                      .fontSize("18fp")
+                    Row() {
+                      Text("销量：2425")
+                        .width("50%")
+                        .height("60vp")
+                        .offset({ x: "0vp", y: "-1.28vp" })
+                        .borderWidth("0.25vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                      Text("价格：￥159")
+                        .width("50%")
+                        .height("100%")
+                        .borderWidth("0.25vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                    }
+                    .width("100%")
+                    .height("40%")
+                  }
+                  .width("60%")
+                  .height("100%")
+                }
+                .width("100%")
+                .height("100%")
+              }
+              .width("100%")
+              .height("100%")
+            }
+            .width("100%")
+            .height("20%")
+            .borderWidth("1vp")
+            .borderColor("#ff9705")
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.cahtou'))
+                    .width("40%")
+                    .height("100%")
+                    .objectFit(ImageFit.Cover)
+                  Column() {
+                    Text("小米智能插座空调伴侣远程控制家具")
+                      .width("100%")
+                      .height("60%")
+                      .borderWidth("0.5vp")
+                      .borderColor("#ff9705")
+                      .fontColor(Color.Black)
+                      .padding({ left: "20vp" })
+                      .textAlign(TextAlign.Start)
+                      .fontSize("18fp")
+                    Row() {
+                      Text("销量：2425")
+                        .width("50%")
+                        .height("60vp")
+                        .borderWidth("0.25vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                      Text("价格：￥159")
+                        .width("50%")
+                        .height("100%")
+                        .borderWidth("0.25vp")
+                        .borderColor("#ff9705")
+                        .fontColor(Color.Black)
+                        .textAlign(TextAlign.Center)
+                        .fontSize("15fp")
+                    }
+                    .width("100%")
+                    .height("40%")
+                  }
+                  .width("60%")
+                  .height("100%")
+                }
+                .width("100%")
+                .height("100%")
+              }
+              .width("100%")
+              .height("100%")
+            }
+            .width("100%")
+            .height("20%")
+            .offset({ x: "0vp", y: "0vp" })
+            .borderWidth("1vp")
+            .borderColor("#ff9705")
+          }
+          .width("100%")
+          .height("93%")
+          .alignItems(HorizontalAlign.Start)
+        }
+        .offset({ x: "0vp", y: "0vp" })
+        .tabBar({ icon: $r('app.media.gw'), text: "商城" })
+        TabContent() {
+          Column() {
+            Text("我的")
+              .width("200vp")
+              .height("60vp")
+              .fontColor(Color.Black)
+              .padding({ left: "20vp" })
+              .fontSize("20fp")
+              .fontWeight(FontWeight.Bold)
+            Row() {
+              Image($r('app.media.renxiang'))
+                .width("20%")
+                .height("80%")
+                .objectFit(ImageFit.Contain)
+              Text("13927354920")
+                .width("200vp")
+                .height("60vp")
+                .offset({ x: "8vp", y: "0.3vp" })
+                .fontColor(Color.Black)
+                .fontSize("20fp")
+            }
+            .width("360vp")
+            .height("70.61vp")
+            .offset({ x: "0vp", y: "0vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.fangwugl'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("房屋管理")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.pintuan'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("成员管理")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.chanpingg'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("产品管理")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.huiyuan'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("会员管理")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.qiandai'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("银行卡管理")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Row() {
+                  Image($r('app.media.shezhi2'))
+                    .width("20%")
+                    .height("70%")
+                    .offset({ x: "28.92vp", y: "0vp" })
+                    .objectFit(ImageFit.Contain)
+                  Text("设置")
+                    .width("200vp")
+                    .height("60vp")
+                    .offset({ x: "41.85vp", y: "0vp" })
+                    .fontColor(Color.Black)
+                    .padding({ left: "20vp" })
+                    .fontSize("15fp")
+                }
+                .width("100%")
+                .height("100%")
+                .offset({ x: "0vp", y: "0vp" })
+              }
+              .width("100%")
+              .height("100%")
+              .offset({ x: "0vp", y: "0vp" })
+            }
+            .width("100%")
+            .height("55vp")
+            .offset({ x: "0vp", y: "5.64vp" })
+            List() {
+              ListItem() {
+                Image($r('app.media.anniu1'))
+                  .width("100%")
+                  .height("55%")
+                  .objectFit(ImageFit.Contain)
+                  .onClick(() => {
+                  router.pushUrl({
+                    url: 'pages/LoginPage'
+                  });
+                })
+              }
+              .width("100%")
+              .height("100vp")
+            }
+          }
+          .width("100%")
+          .height("93%")
+          .alignItems(HorizontalAlign.Start)
+        }
+        .tabBar({ icon: $r('app.media.wd'), text: "我的" })
+
+      }
+      .width("100%")
+      .height("100%")
+      Search({})
+        .width("100%")
+        .height("40vp")
+    }
+    .width("100%")
+    .height("100%")
+  }
+}
